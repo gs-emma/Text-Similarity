@@ -1,0 +1,42 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <div class="header">
+        <h3>Semantically Similar?</h3>
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="grid-container">
+            <div class="field1">
+                {{form.text1.errors}}
+                {{form.text1.label_tag}} </br>
+                {{form.text1}}
+            </div>
+
+            <div class="field2">
+                {{form.text2.errors}}
+                {{form.text2.label_tag}} </br>
+                {{form.text2}}
+            </div>
+        </div>
+
+        <div class="button-container">
+            <input type="submit" value="Compare!"/>
+        </div>
+
+        <div class="result-container">
+            {% if result %}
+                <label name="result"> YES </label>
+            {% elif result == False %}
+                <label name="result"> NO </label>
+            {% endif %}
+        </div>
+    </form>
+</html>
+
